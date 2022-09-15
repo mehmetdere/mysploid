@@ -1,4 +1,4 @@
-$server = 'http://192.168.1.41:8080/'
+$server = 'http://192.168.1.41:8080'
 $ip		= get-WmiObject Win32_NetworkAdapterConfiguration|Where {$_.Ipaddress.length -gt 1} 
 $user 	= (whoami).split('\')[1]
 $id 	= $ip.ipaddress[0]+'.'+$user
