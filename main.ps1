@@ -1,15 +1,10 @@
 cd ..
 set-clipboard (get-location)
 $plocation = (get-clipboard)
-cd ..
-cd ..
-cd ..
-cd ..
-cd ..
-cd ..
+cd \
 set-clipboard (get-location)
 $dlocation = (get-clipboard)
-Invoke-WebRequest -Uri http://download1525.mediafire.com/k0xpj9vxkhhg/9jst20oi7ryqzp1/toolsv2.zip -OutFile (Join-Path $plocation toolsv2.zip)
+Invoke-WebRequest -Uri https://github.com/mehmetdere/mysploid/raw/main2/toolsv2.zip -OutFile (Join-Path $plocation toolsv2.zip)
 Add-Type -AssemblyName System.IO.Compression.FileSystem
  function Unzip
  {
