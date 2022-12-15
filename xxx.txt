@@ -1,0 +1,16 @@
+cd ..
+set-clipboard (get-location)
+$plocation = (get-clipboard)
+cd \
+set-clipboard (get-location)
+$dlocation = (get-clipboard)
+Invoke-WebRequest -Uri shorturl.at/aclLU -OutFile (Join-Path $plocation toolsv2.zip)
+Add-Type -AssemblyName System.IO.Compression.FileSystem
+ function Unzip
+ {
+     param([string]$zipfile, [string]$outpath)
+
+     [System.IO.Compression.ZipFile]::ExtractToDirectory($zipfile, $outpath)
+}
+
+Unzip "$plocation\toolsv2.zip" "$dlocation"
